@@ -2,13 +2,21 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Flash Sale Shopee</title>
+<title>Deal Shopee</title>
 
 <style>
 
 body{
-font-family: Arial;
+font-family:Arial;
 background:#f5f5f5;
+margin:0;
+}
+
+.header{
+background:#ee4d2d;
+color:white;
+padding:15px;
+font-size:22px;
 }
 
 .products{
@@ -22,11 +30,12 @@ padding:20px;
 background:white;
 padding:10px;
 border-radius:8px;
-box-shadow:0 0 5px rgba(0,0,0,0.1);
+box-shadow:0 2px 6px rgba(0,0,0,0.1);
 }
 
 img{
 width:100%;
+border-radius:6px;
 }
 
 .price{
@@ -34,59 +43,71 @@ color:red;
 font-weight:bold;
 }
 
-</style>
+button{
+background:#ee4d2d;
+border:none;
+color:white;
+padding:8px 12px;
+border-radius:5px;
+cursor:pointer;
+}
 
+</style>
 </head>
 
 <body>
 
-<h1>Sản phẩm Shopee</h1>
+<div class="header">
+🔥 Deal Shopee hôm nay
+</div>
 
-<div class="products" id="products">Đang tải...</div>
+<div class="products">
 
-<script>
-
-fetch("https://corsproxy.io/?https://shopee.vn/api/v4/search/search_items?by=ctime&limit=20&newest=0&order=desc&page_type=search")
-.then(res => res.json())
-.then(data => {
-
-console.log(data)
-
-let html=""
-
-data.items.forEach(item=>{
-
-let name=item.item_basic.name
-let image=item.item_basic.image
-let price=item.item_basic.price/100000
-
-let link=`https://shopee.vn/product/${item.item_basic.shopid}/${item.item_basic.itemid}`
-
-html+=`
 <div class="card">
 
-<img src="https://cf.shopee.vn/file/${image}">
+<img src="https://cf.shopee.vn/file/4e9c3d9d3c2b0f">
 
-<p>${name}</p>
+<p>Tai nghe Bluetooth</p>
 
-<p class="price">${price}₫</p>
+<p class="price">59.000₫</p>
 
-<a href="${link}" target="_blank">Xem sản phẩm</a>
+<a href="https://shopee.vn/" target="_blank">
+<button>Mua ngay</button>
+</a>
 
 </div>
-`
 
-})
 
-document.getElementById("products").innerHTML=html
+<div class="card">
 
-})
-.catch(err=>{
-document.getElementById("products").innerHTML="Không lấy được dữ liệu"
-console.log(err)
-})
+<img src="https://cf.shopee.vn/file/2e03b7c1e4c4e">
 
-</script>
+<p>Sạc nhanh 65W</p>
+
+<p class="price">129.000₫</p>
+
+<a href="https://shopee.vn/" target="_blank">
+<button>Mua ngay</button>
+</a>
+
+</div>
+
+
+<div class="card">
+
+<img src="https://cf.shopee.vn/file/59f0e8a32f4">
+
+<p>Chuột gaming RGB</p>
+
+<p class="price">79.000₫</p>
+
+<a href="https://shopee.vn/" target="_blank">
+<button>Mua ngay</button>
+</a>
+
+</div>
+
+</div>
 
 </body>
 </html>
