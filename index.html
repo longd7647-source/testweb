@@ -40,15 +40,17 @@ font-weight:bold;
 
 <body>
 
-<h1>Sản phẩm Flash Sale Shopee</h1>
+<h1>Sản phẩm Shopee</h1>
 
-<div class="products" id="products"></div>
+<div class="products" id="products">Đang tải...</div>
 
 <script>
 
-fetch("https://shopee.vn/api/v4/search/search_items?by=ctime&limit=20&newest=0&order=desc&page_type=search")
-.then(res=>res.json())
-.then(data=>{
+fetch("https://corsproxy.io/?https://shopee.vn/api/v4/search/search_items?by=ctime&limit=20&newest=0&order=desc&page_type=search")
+.then(res => res.json())
+.then(data => {
+
+console.log(data)
 
 let html=""
 
@@ -78,6 +80,10 @@ html+=`
 
 document.getElementById("products").innerHTML=html
 
+})
+.catch(err=>{
+document.getElementById("products").innerHTML="Không lấy được dữ liệu"
+console.log(err)
 })
 
 </script>
