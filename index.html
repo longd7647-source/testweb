@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Shopee Flash Sale</title>
+<title>Flash Sale Shopee</title>
 </head>
 
 <body>
@@ -13,7 +13,7 @@
 
 <script>
 
-fetch("https://shopee.vn/api/v4/flash_sale/get_flash_sale")
+fetch("https://corsproxy.io/?https://shopee.vn/api/v4/flash_sale/get_flash_sale")
 .then(res => res.json())
 .then(data => {
 
@@ -27,9 +27,9 @@ let shopid = item.shopid
 let link = "https://shopee.vn/product/" + shopid + "/" + itemid
 
 html += `
-<div style="border:1px solid #ccc;margin:10px;padding:10px">
+<div style="margin:10px;padding:10px;border:1px solid #ccc">
 <a href="${link}" target="_blank">
-Sản phẩm ${itemid}
+Xem sản phẩm ${itemid}
 </a>
 </div>
 `
