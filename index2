@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Shopee Flash Sale</title>
+</head>
+
+<body>
+
+<h1>Sản phẩm Flash Sale Shopee</h1>
+
+<div id="products"></div>
+
+<script>
+
+fetch("https://shopee.vn/api/v4/flash_sale/get_flash_sale")
+.then(res => res.json())
+.then(data => {
+
+let html = ""
+
+data.data.sessions[0].items.forEach(item => {
+
+let itemid = item.itemid
+let shopid = item.shopid
+
+let link = "https://shopee.vn/product/" + shopid + "/" + itemid
+
+html += `
+<div style="border:1px solid #ccc;margin:10px;padding:10px">
+<a href="${link}" target="_blank">
+Sản phẩm ${itemid}
+</a>
+</div>
+`
+
+})
+
+document.getElementById("products").innerHTML = html
+
+})
+
+</script>
+
+</body>
+</html>
