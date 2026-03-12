@@ -9,7 +9,7 @@
 
 <h1>Sản phẩm Flash Sale Shopee</h1>
 
-<div id="products"></div>
+<div id="products">Đang tải...</div>
 
 <script>
 
@@ -17,9 +17,18 @@ fetch("https://corsproxy.io/?https://shopee.vn/api/v4/flash_sale/get_flash_sale"
 .then(res => res.json())
 .then(data => {
 
+console.log(data)
+
 let html = ""
 
-data.data.sessions[0].items.forEach(item => {
+if(!data.data || !data.data.sessions){
+document.getElementById("products").innerHTML = "Không lấy được dữ liệu"
+return
+}
+
+data.data.sessions.forEach(session => {
+
+session.items.forEach(item => {
 
 let itemid = item.itemid
 let shopid = item.shopid
@@ -36,8 +45,14 @@ Xem sản phẩm ${itemid}
 
 })
 
+})
+
 document.getElementById("products").innerHTML = html
 
+})
+.catch(err=>{
+console.error(err)
+document.getElementById("products").innerHTML = "Lỗi khi lấy dữ liệu"
 })
 
 </script>
